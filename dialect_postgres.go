@@ -13,6 +13,8 @@ type postgres struct {
 }
 
 func init() {
+	// reusing gorm built-in dialect for our internal postgres driver wrapper
+	RegisterDialect("postgres_monitored", &postgres{})
 	RegisterDialect("postgres", &postgres{})
 	RegisterDialect("cloudsqlpostgres", &postgres{})
 }
